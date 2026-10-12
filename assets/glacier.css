@@ -1,0 +1,94 @@
+/* ==== Motion & interaction layer (2026-10-12) ====
+   Overlay-only: no layout, colour, font or structure changes to the existing design.
+   Sheens use currentColor / translucent white so the Version B palette is untouched.
+   Everything is disabled under prefers-reduced-motion. */
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes spinAng{to{--ang:360deg}}
+@keyframes sheenText{0%{background-position:150% 0}60%,100%{background-position:-50% 0}}
+@keyframes sweep{0%,55%{transform:translateX(-140%) skewX(-18deg)}85%,100%{transform:translateX(260%) skewX(-18deg)}}
+
+/* scroll progress */
+.ice-progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:100;pointer-events:none;transform-origin:0 50%;transform:scaleX(var(--sp,0));background:linear-gradient(90deg,#007C8B,#009FB3,#72CAD5)}
+
+/* logo: gentle float + specular shine masked to the logo pixels (shape unchanged) */
+.brand{position:relative}
+.brand-logo{animation:logoFloat 6s ease-in-out infinite}
+.brand::after{content:"";position:absolute;inset:0;pointer-events:none;
+  -webkit-mask:url('crystalline-logo.png') center/contain no-repeat;mask:url('crystalline-logo.png') center/contain no-repeat;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.85) 50%,transparent 60%);background-size:300% 100%;
+  animation:logoShine 5.5s ease-in-out infinite,logoFloat 6s ease-in-out infinite}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes logoShine{0%,55%{background-position:120% 0}85%,100%{background-position:-20% 0}}
+
+/* heading shimmer: same colour, a light band glides across */
+.hero h1 em .w,.section-head h2,.split-copy h2,.request-copy h2,.cta h2,.faq-intro h2,.stat-num{
+  background-image:linear-gradient(100deg,currentColor 42%,#72CAD5 50%,currentColor 58%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sheenText 7s ease-in-out infinite}
+.section-dark .section-head h2,.section-dark .faq-intro h2{-webkit-text-fill-color:transparent!important}
+.stat-card:nth-child(2) .stat-num{animation-delay:-2s}.stat-card:nth-child(3) .stat-num{animation-delay:-4s}
+
+/* hero headline word-by-word entrance */
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(.4em);filter:blur(6px);animation:wordIn .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*90ms + 150ms)}
+.hero h1 em .w{animation:wordIn .9s cubic-bezier(.2,.8,.2,1) forwards,sheenText 7s ease-in-out 1.5s infinite;animation-delay:calc(var(--i)*90ms + 150ms),1.5s}
+@keyframes wordIn{to{opacity:1;transform:none;filter:none}}
+
+/* hero: cursor-reactive light + subtle 3D tilt + glass sweep on the existing photo card */
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(480px circle at var(--mx,50%) var(--my,30%),rgba(255,255,255,.55),transparent 65%)}
+.hero:hover::before{opacity:1}
+.hero-visual{perspective:1200px}
+.hero-card{transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.crystals{position:absolute;inset:0;pointer-events:none;z-index:2;transition:transform .4s ease-out}
+.crystals span{position:absolute}
+.crystals svg{display:block;opacity:.85;filter:drop-shadow(0 10px 18px rgba(0,124,139,.25));animation:floaty var(--d,8s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+@keyframes floaty{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-16px) rotate(var(--r,8deg))}}
+
+/* glass sheen overlays on existing cards (colours untouched) */
+.glass-fx{position:relative}
+.glass-fx>.sweep{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:2}
+.glass-fx>.sweep::before{content:"";position:absolute;top:0;bottom:0;width:35%;left:0;transform:translateX(-140%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.glass-fx:hover>.sweep::before{transform:translateX(360%) skewX(-18deg)}
+.glass-fx::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;transition:opacity .35s;background:radial-gradient(320px circle at var(--px,50%) var(--py,0),rgba(255,255,255,.35),transparent 60%)}
+.glass-fx:hover::after{opacity:1}
+.stat-card>.sweep::before{animation:sweep 6s ease-in-out infinite}
+.stat-card:nth-child(2)>.sweep::before{animation-delay:1s}.stat-card:nth-child(3)>.sweep::before{animation-delay:2s}
+.service-icon,.principle,.guide-option,.faq-question span{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.service-card:hover .service-icon{transform:translateY(-3px) rotate(-6deg) scale(1.08)}
+.principle:hover{transform:translateY(-3px)}
+
+/* testimonial ticker: auto-cycling spotlight on the existing review cards */
+.review-card{transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s}
+.review-card.spot{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,124,139,.18),0 0 0 2px rgba(0,159,179,.35)}
+.review-card.spot>.sweep::before{transform:translateX(360%) skewX(-18deg)}
+
+/* smart guide: AI "thinking" state + auto-demo pulse */
+.guide-kicker::before{content:"";display:inline-block;width:9px;height:9px;margin-right:8px;border-radius:50%;vertical-align:middle;background:conic-gradient(from var(--ang),#009FB3,#fff,#72CAD5,#009FB3);animation:spinAng 2.5s linear infinite;box-shadow:0 0 8px rgba(0,159,179,.6)}
+#guide-result-copy,#guide-result-title{transition:opacity .25s}
+.guide-result.thinking #guide-result-copy,.guide-result.thinking #guide-result-title{opacity:.25}
+.guide-result.thinking small::after{content:" · thinking…";animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.3}}
+.guide-option.active{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{50%{transform:scale(1.05)}}
+.caret::after{content:"▍";margin-left:1px;animation:blink .8s steps(2) infinite;opacity:.7}
+
+/* sticky animated CTA / assistant pill (appears after the hero) */
+.sticky-cta{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;gap:8px;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .4s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+.sticky-cta .btn{min-height:46px}
+.sticky-cta .ai{width:46px;padding:0;position:relative}
+.sticky-cta .ai::before{content:"";position:absolute;inset:-3px;border-radius:50%;border:1px solid rgba(0,159,179,.5);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.35);opacity:0}}
+.btn-primary.breathe{animation:breathe 3.5s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 14px 30px rgba(0,159,179,.38),0 0 0 6px rgba(0,159,179,.12)}}
+
+/* scroll reveal (only when JS is running and motion allowed) */
+html.gx .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.2,.8,.2,1),transform .85s cubic-bezier(.2,.8,.2,1)}
+html.gx .reveal.in{opacity:1;transform:none}
+html.gx .stagger>*{transition-delay:calc(var(--k,0)*90ms)}
+
+@media (max-width:860px){.crystals{display:none}.sticky-cta{right:12px;left:12px;bottom:12px;justify-content:flex-end}.sticky-cta .btn-primary{flex:1}}
+@media (hover:none){.glass-fx::after,.hero::before{display:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html.gx .reveal,.hero h1 .w{opacity:1!important;transform:none!important;filter:none!important}
+  .hero-card{transform:none!important}
+}

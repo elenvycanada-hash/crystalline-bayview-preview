@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#009FB3">
+  <meta name="description" content="A website concept for Crystalline Dental's future Bayview Village location in North York.">
+  <title>Crystalline Dental — Bayview Village</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23073f47'/%3E%3Cpath d='M32 11 43 24 32 53 21 24Z' fill='%2363d7d0'/%3E%3Cpath d='m21 24 11 7 11-7M32 11v20' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--deep:#164749;--deep-2:#2f6967;--teal:#619d98;--aqua:#8fd3cd;--sky:#c7e7e4;--ice:#f0f8f7;--paper:#fbfdfd;--ink:#173c3d;--muted:#5b7776;--line:#d8e8e6;--white:#fff;--shadow:0 24px 70px rgba(22,71,73,.13);--radius:30px;--max:1240px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Manrope",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    img{display:block;max-width:100%}
+    .shell{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
+    .eyebrow{margin:0 0 14px;color:var(--deep-2);font:700 .78rem/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border:1px solid transparent;border-radius:999px;font:700 .92rem/1 "DM Sans",sans-serif;transition:.25s ease;cursor:pointer}
+    .btn-primary{background:var(--deep);color:#fff;box-shadow:0 12px 30px rgba(7,63,71,.2)}
+    .btn-primary:hover{background:var(--deep-2);transform:translateY(-2px)}
+    .btn-light{background:rgba(255,255,255,.8);border-color:rgba(7,63,71,.15);color:var(--deep)}
+    .btn-light:hover{background:#fff;transform:translateY(-2px)}
+    .top-note{background:var(--deep);color:#d9f3f1;font-size:.78rem}
+    .top-note .shell{min-height:34px;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center}
+    .top-note span{width:5px;height:5px;border-radius:50%;background:var(--aqua)}
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(251,253,253,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(215,233,233,.72)}
+    .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .brand-logo{width:156px;height:70px;object-fit:contain}
+    .brand-mark{width:37px;height:43px;display:grid;place-items:center;clip-path:polygon(50% 0,100% 32%,74% 100%,26% 100%,0 32%);background:linear-gradient(145deg,var(--aqua),var(--teal) 55%,#1688ad)}
+    .brand-mark::after{content:"";width:7px;height:22px;border-radius:50%;border-left:2px solid rgba(255,255,255,.85);transform:rotate(-20deg)}
+    .brand-copy strong{display:block;font:700 1.08rem/1.05 "DM Sans",sans-serif;letter-spacing:-.025em}
+    .brand-copy small{display:block;margin-top:4px;color:var(--muted);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:28px;font:600 .82rem/1 "DM Sans",sans-serif;color:#385b60}
+    .nav-links a:not(.btn):hover{color:var(--teal)}
+    .nav .btn{min-height:44px;padding-inline:18px}
+    .menu-btn{display:none;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--deep);cursor:pointer}
+    .hero{position:relative;overflow:hidden;padding:66px 0 38px;background:radial-gradient(circle at 13% 8%,#d9f4f2 0,transparent 38%),linear-gradient(135deg,#f8fcfb 32%,#e8f7f7 100%)}
+    .hero::after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(22,174,176,.17);border-radius:50%;right:-220px;top:-190px;box-shadow:0 0 0 60px rgba(99,215,208,.05),0 0 0 130px rgba(99,215,208,.035)}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;gap:70px;align-items:center}
+    .launch-chip{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;padding:9px 14px 9px 10px;border:1px solid rgba(22,174,176,.26);border-radius:999px;background:rgba(255,255,255,.66);color:var(--deep-2);font:600 .78rem/1 "DM Sans",sans-serif}
+    .launch-chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(22,174,176,.12)}
+    h1{max-width:760px;margin:0;font:500 clamp(3.2rem,6.3vw,6.75rem)/.91 "DM Sans",sans-serif;letter-spacing:-.065em;color:var(--deep)}
+    h1 em{font-style:normal;color:var(--teal)}
+    .hero-lede{max-width:600px;margin:28px 0 0;color:#4a6b70;font-size:1.08rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+    .hero-note{margin:20px 0 0;color:#678086;font-size:.78rem}
+    .hero-visual{position:relative;min-height:570px}
+    .hero-card{position:absolute;inset:8px 0 0 38px;overflow:hidden;border-radius:42px 42px 140px 42px;background:linear-gradient(150deg,#c8f0ee,#71d3d0 54%,#178e9f);box-shadow:var(--shadow)}
+    .hero-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.78),transparent 34%),linear-gradient(155deg,transparent 45%,rgba(5,71,79,.15))}
+    .orb{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.48)}
+    .orb.one{width:250px;height:250px;right:-48px;top:80px}
+    .orb.two{width:122px;height:122px;left:58px;bottom:100px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+    .crystal{position:absolute;left:18%;top:17%;width:260px;height:330px;clip-path:polygon(50% 0,94% 28%,76% 100%,24% 100%,6% 28%);background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(255,255,255,.17) 52%,rgba(4,74,85,.12));border:1px solid rgba(255,255,255,.75);filter:drop-shadow(0 30px 34px rgba(4,82,88,.19))}
+    .crystal::before{content:"";position:absolute;inset:0;clip-path:polygon(49% 0,51% 0,52% 48%,76% 100%,74% 100%,50% 53%,26% 100%,24% 100%,48% 48%,6% 28%,7% 26%,50% 45%,93% 26%,94% 28%,52% 48%);background:rgba(255,255,255,.66)}
+    .floating-note{position:absolute;right:-18px;bottom:46px;width:230px;padding:22px;border:1px solid rgba(255,255,255,.7);border-radius:22px;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(7,63,71,.14)}
+    .floating-note strong{display:block;font:700 .95rem/1.2 "DM Sans",sans-serif;color:var(--deep)}
+    .floating-note span{display:block;margin-top:7px;color:var(--muted);font-size:.76rem}
+    .trust{position:relative;z-index:3;margin-top:38px}
+    .trust-inner{display:grid;grid-template-columns:1.2fr repeat(3,1fr);border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.85);box-shadow:0 15px 45px rgba(7,63,71,.08)}
+    .trust-item{min-height:92px;padding:20px 24px;display:flex;align-items:center;gap:14px;border-left:1px solid var(--line)}
+    .trust-item:first-child{border-left:0}
+    .trust-item svg{width:24px;height:24px;flex:0 0 auto;color:var(--teal)}
+    .trust-item strong{display:block;font:700 .86rem/1.3 "DM Sans",sans-serif}
+    .trust-item span{display:block;margin-top:4px;color:var(--muted);font-size:.72rem}
+    .trust-intro{background:var(--deep);color:#fff;border-radius:20px 0 0 20px}
+    .trust-intro span{color:#a9d7d5}
+    section{scroll-margin-top:96px}
+    .section{padding:118px 0}
+    .section-soft{background:var(--ice)}
+    .section-dark{background:var(--deep);color:#fff}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:48px}
+    .section-head h2,.split-copy h2,.request-copy h2,.cta h2{max-width:760px;margin:0;font:500 clamp(2.45rem,4.4vw,4.8rem)/1 "DM Sans",sans-serif;letter-spacing:-.055em;color:var(--deep)}
+    .section-head p{max-width:440px;margin:0;color:var(--muted);font-size:.98rem}
+    .confirm-note{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:.72rem}
+    .confirm-note::before{content:"";width:6px;height:6px;border-radius:50%;background:#e5a43f}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .service-card{position:relative;min-height:285px;padding:28px;border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;transition:.25s ease}
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(7,63,71,.1);border-color:#b8dede}
+    .service-number{display:flex;align-items:center;justify-content:space-between;margin-bottom:72px;color:var(--muted);font:600 .72rem/1 "DM Sans",sans-serif}
+    .service-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:var(--ice);color:var(--teal)}
+    .service-icon svg{width:23px;height:23px}
+    .service-card h3{margin:0;font:600 1.28rem/1.2 "DM Sans",sans-serif;letter-spacing:-.03em;color:var(--deep)}
+    .service-card p{margin:12px 0 0;color:var(--muted);font-size:.85rem}
+    .tbd{display:inline-block;margin-top:18px;color:#8a6a34;font:600 .66rem/1 "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+    .smart-guide{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;margin-top:26px;padding:34px;border:1px solid #bfdad7;border-radius:30px;background:linear-gradient(130deg,#e4f4f2,#f9fcfc 58%);box-shadow:0 20px 55px rgba(22,71,73,.08)}
+    .smart-guide h3{margin:0;font:600 1.7rem/1.1 "DM Sans",sans-serif;letter-spacing:-.035em;color:var(--deep)}
+    .smart-guide p{margin:12px 0 0;color:var(--muted);font-size:.84rem}
+    .guide-kicker{display:inline-flex;align-items:center;gap:7px;margin-bottom:16px;color:var(--teal);font:700 .68rem/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .guide-kicker::before{content:"✦";font-size:1rem}
+    .guide-options{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .guide-option{padding:11px 14px;border:1px solid #bdd8d5;border-radius:999px;background:#fff;color:var(--deep);font:600 .75rem/1 "DM Sans",sans-serif;cursor:pointer;transition:.2s ease}
+    .guide-option:hover,.guide-option.active{border-color:var(--teal);background:var(--teal);color:#fff;transform:translateY(-1px)}
+    .guide-result{min-height:230px;padding:28px;border-radius:22px;background:var(--deep);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+    .guide-result small{color:#a7cfcc;font:600 .68rem/1 "DM Sans",sans-serif;letter-spacing:.11em;text-transform:uppercase}
+    .guide-result h4{margin:18px 0 8px;font:600 1.45rem/1.15 "DM Sans",sans-serif}
+    .guide-result p{color:#c5dedd}
+    .guide-result a{align-self:flex-start;color:var(--aqua);font:700 .76rem/1 "DM Sans",sans-serif}
+    .doctor-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:76px;align-items:center}
+    .portrait-placeholder{position:relative;min-height:630px;overflow:hidden;border-radius:36px 36px 130px 36px;background:#dceceb;box-shadow:var(--shadow)}
+    .portrait-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+    .portrait-placeholder::after{content:"Photo from the Vaughan clinic website";position:absolute;left:24px;bottom:24px;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.87);color:var(--deep);font:600 .64rem/1 "DM Sans",sans-serif;text-transform:uppercase;letter-spacing:.08em}
+    .split-copy h2{margin-bottom:26px}
+    .split-copy .lead{color:#345e63;font-size:1.13rem;line-height:1.7}
+    .split-copy p{color:var(--muted)}
+    .principles{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:34px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--line)}
+    .principle{padding:22px;background:#fff}
+    .principle strong{display:block;font:700 .86rem/1.3 "DM Sans",sans-serif;color:var(--deep)}
+    .principle span{display:block;margin-top:7px;color:var(--muted);font-size:.78rem}
+    .experience-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .experience-image{position:relative;min-height:650px;overflow:hidden;border-radius:34px}
+    .experience-image img{width:100%;height:100%;object-fit:cover}
+    .image-caption{position:absolute;left:22px;right:22px;bottom:22px;padding:17px 20px;border:1px solid rgba(255,255,255,.55);border-radius:18px;background:rgba(4,55,61,.78);backdrop-filter:blur(14px);color:#fff;font-size:.75rem}
+    .experience-cards{display:grid;gap:18px}
+    .experience-card{padding:30px;border-radius:30px;background:#fff;color:var(--ink)}
+    .experience-card:nth-child(2){background:var(--aqua)}
+    .experience-card:nth-child(3){background:#0c5962;color:#fff}
+    .experience-card.visual{position:relative;overflow:hidden;background:linear-gradient(rgba(5,54,61,.63),rgba(5,54,61,.75)),url('assets/dental-treatment-room.jpg') center/cover;color:#fff}
+    .experience-card small{display:block;margin-bottom:38px;font:700 .67rem/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+    .experience-card h3{margin:0;font:600 1.48rem/1.15 "DM Sans",sans-serif;letter-spacing:-.035em}
+    .experience-card p{margin:12px 0 0;font-size:.82rem;opacity:.72}
+    .request-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:74px;align-items:start}
+    .request-copy{position:sticky;top:120px}
+    .request-copy h2{margin-bottom:24px}
+    .request-copy p{color:var(--muted)}
+    .demo-callout{margin-top:30px;padding:18px;border-left:3px solid var(--teal);background:#fff;color:var(--muted);font-size:.78rem}
+    .form-card{padding:34px;border:1px solid var(--line);border-radius:30px;background:#fff;box-shadow:0 20px 60px rgba(7,63,71,.08)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{margin-bottom:18px}
+    label{display:block;margin-bottom:8px;color:var(--deep);font:700 .75rem/1.2 "DM Sans",sans-serif}
+    input,select,textarea{width:100%;min-height:52px;padding:13px 15px;border:1px solid #cfe2e2;border-radius:12px;background:#fbfdfd;color:var(--ink);outline:none;transition:.2s ease}
+    textarea{min-height:120px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(22,174,176,.1)}
+    .check{display:flex;align-items:flex-start;gap:11px;margin:4px 0 22px;color:var(--muted);font-size:.72rem}
+    .check input{width:18px;height:18px;min-height:0;flex:0 0 auto;margin-top:2px;accent-color:var(--teal)}
+    .form-card .btn{width:100%}
+    .form-status{display:none;margin-top:16px;padding:14px 16px;border-radius:12px;background:#e5f7f4;color:#12645f;font-size:.8rem}
+    .form-status.show{display:block}
+    .reviews-track{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .review-card{min-height:315px;padding:28px;border:1px solid var(--line);border-radius:24px;background:#fff}
+    .review-card:nth-child(2){transform:translateY(22px)}
+    .quote-mark{font:500 3.8rem/1 "DM Sans",sans-serif;color:var(--aqua)}
+    .review-card blockquote{margin:28px 0;color:#47696e;font-size:1rem}
+    .review-meta{margin-top:42px;padding-top:18px;border-top:1px solid var(--line)}
+    .review-meta strong{display:block;font:700 .78rem/1.3 "DM Sans",sans-serif;color:var(--deep)}
+    .review-meta span{font-size:.7rem;color:var(--muted)}
+    .faq-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:72px;align-items:start}
+    .faq-intro h2{margin:0;font:500 clamp(2.5rem,4vw,4.5rem)/1 "DM Sans",sans-serif;letter-spacing:-.055em;color:#fff}
+    .faq-intro p{color:#aed1d2}
+    .faq-list{border-top:1px solid rgba(255,255,255,.18)}
+    .faq-item{border-bottom:1px solid rgba(255,255,255,.18)}
+    .faq-question{width:100%;padding:25px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;border:0;background:none;color:#fff;text-align:left;font:600 1rem/1.35 "DM Sans",sans-serif;cursor:pointer}
+    .faq-question span{width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);border-radius:50%;flex:0 0 auto;transition:.25s ease}
+    .faq-question[aria-expanded="true"] span{transform:rotate(45deg);background:var(--aqua);color:var(--deep)}
+    .faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+    .faq-answer>div{overflow:hidden}
+    .faq-answer p{margin:0;padding:0 52px 24px 0;color:#acd0d2;font-size:.88rem}
+    .faq-question[aria-expanded="true"]+.faq-answer{grid-template-rows:1fr}
+    .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .map-placeholder{position:relative;min-height:500px;overflow:hidden;border-radius:34px;background-color:#dff1f0;background-image:linear-gradient(32deg,transparent 47%,rgba(7,63,71,.12) 48%,rgba(7,63,71,.12) 50%,transparent 51%),linear-gradient(-27deg,transparent 46%,rgba(7,63,71,.09) 47%,rgba(7,63,71,.09) 49%,transparent 50%);background-size:110px 100px,150px 130px}
+    .map-pin{position:absolute;left:53%;top:46%;transform:translate(-50%,-50%);width:74px;height:74px;display:grid;place-items:center;border:10px solid rgba(255,255,255,.7);border-radius:50% 50% 50% 12px;background:var(--deep);color:#fff;box-shadow:0 14px 30px rgba(7,63,71,.23);transform-origin:center;rotate:-45deg}
+    .map-pin span{rotate:45deg;font:700 .76rem/1 "DM Sans",sans-serif}
+    .location-card{padding:46px;border:1px solid var(--line);border-radius:34px;background:#fff}
+    .location-card h3{margin:0;font:500 2.3rem/1.05 "DM Sans",sans-serif;letter-spacing:-.045em;color:var(--deep)}
+    .location-card>p{color:var(--muted)}
+    .location-list{margin:34px 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+    .location-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);font-size:.82rem}
+    .location-list strong{color:var(--deep)}
+    .location-list span{color:var(--muted)}
+    .cta-wrap{padding:0 0 118px}
+    .cta{position:relative;overflow:hidden;padding:72px;border-radius:38px;background:linear-gradient(125deg,var(--aqua),#9be5e1 48%,#d8f6f4);color:var(--deep)}
+    .cta::after{content:"";position:absolute;width:300px;height:300px;right:-80px;top:-105px;border:1px solid rgba(7,63,71,.16);border-radius:50%;box-shadow:0 0 0 45px rgba(255,255,255,.18),0 0 0 90px rgba(255,255,255,.13)}
+    .cta h2{position:relative;z-index:1;max-width:800px}
+    .cta-bottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:38px}
+    .cta-bottom p{max-width:520px;margin:0;color:#285f63}
+    footer{padding:54px 0 28px;background:#052f35;color:#fff}
+    .footer-grid{display:grid;grid-template-columns:1.3fr .7fr .7fr .9fr;gap:44px;padding-bottom:48px}
+    .footer-brand p{max-width:330px;color:#91bdbe;font-size:.8rem}
+    .footer-brand .brand{display:inline-flex;padding:5px 12px;border-radius:14px;background:#fff}
+    .footer-brand .brand-logo{width:146px;height:68px}
+    footer h3{margin:4px 0 18px;font:700 .72rem/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#a9d2d1}
+    .footer-links{display:grid;gap:10px;color:#d9eded;font-size:.78rem}
+    .todo-contact{display:grid;gap:7px;color:#91bdbe;font-size:.76rem}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);color:#719d9f;font-size:.68rem}
+    .mobile-panel{display:none}
+    .reveal{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+    @media (max-width:980px){.nav-links{display:none}.menu-btn{display:block}.mobile-panel{position:fixed;inset:117px 0 0;z-index:49;padding:28px 20px;background:rgba(251,253,253,.98);backdrop-filter:blur(18px)}.menu-open .mobile-panel{display:grid;align-content:start;gap:8px}.mobile-panel a{padding:17px 8px;border-bottom:1px solid var(--line);font:600 1.12rem/1 "DM Sans",sans-serif}.mobile-panel .btn{margin-top:16px;color:#fff}.hero{padding-top:48px}.hero-grid{grid-template-columns:1fr;gap:40px}.hero-copy{text-align:center}.launch-chip{margin-inline:auto}.hero-lede{margin-inline:auto}.hero-actions{justify-content:center}.hero-visual{min-height:470px;max-width:620px;width:100%;margin:auto}.hero-card{inset:0 30px}.floating-note{right:6px}.trust-inner{grid-template-columns:1fr 1fr}.trust-item:nth-child(3){border-left:0}.trust-intro{border-radius:20px 0 0 0}.section{padding:88px 0}.section-head{align-items:start;flex-direction:column}.services-grid{grid-template-columns:1fr 1fr}.smart-guide{grid-template-columns:1fr}.doctor-grid,.request-grid,.faq-grid{grid-template-columns:1fr;gap:50px}.portrait-placeholder{min-height:510px}.request-copy{position:static}.experience-grid{grid-template-columns:1fr}.experience-image{min-height:540px}.experience-cards{grid-template-columns:repeat(3,1fr)}.experience-card small{margin-bottom:26px}.reviews-track{grid-template-columns:1fr 1fr}.review-card:nth-child(2){transform:none}.review-card:nth-child(3){grid-column:1/-1}.location-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.shell{width:min(calc(100% - 28px),var(--max))}.top-note{font-size:.7rem}.nav{min-height:70px}.brand-copy small{display:none}.mobile-panel{inset:104px 0 0}.hero{padding-top:34px}h1{font-size:clamp(2.9rem,15vw,4.3rem)}.hero-lede{font-size:1rem}.hero-actions{display:grid}.btn{width:100%}.hero-visual{min-height:390px}.hero-card{inset:0;border-radius:28px 28px 90px 28px}.crystal{width:190px;height:250px;left:17%}.floating-note{width:200px;right:0;bottom:22px}.trust{margin-top:26px}.trust-inner{grid-template-columns:1fr}.trust-item,.trust-item:nth-child(3){border-left:0;border-top:1px solid var(--line)}.trust-intro{border-radius:20px 20px 0 0;border-top:0}.section{padding:72px 0}.section-head{margin-bottom:34px}.section-head h2,.split-copy h2,.request-copy h2,.cta h2{font-size:2.65rem}.services-grid{grid-template-columns:1fr}.service-card{min-height:245px}.service-number{margin-bottom:45px}.doctor-grid{gap:36px}.portrait-placeholder{min-height:410px;border-radius:28px 28px 85px 28px}.principles{grid-template-columns:1fr}.experience-image{min-height:430px}.experience-cards{grid-template-columns:1fr}.form-card{padding:22px}.form-row{grid-template-columns:1fr;gap:0}.reviews-track{grid-template-columns:1fr}.review-card:nth-child(3){grid-column:auto}.location-card{padding:28px}.map-placeholder{min-height:380px}.location-list li{grid-template-columns:1fr;gap:6px}.cta-wrap{padding-bottom:72px}.cta{padding:42px 26px;border-radius:28px}.cta-bottom{align-items:stretch;flex-direction:column}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+    /* ==== Polish layer (2026-10-12): glassy / candy / 3D graphics pass.
+       Presentation only — layout, structure, logo, and content unchanged. ==== */
+    ::selection{background:var(--aqua);color:var(--deep)}
+    /* --- Candy-gloss buttons --- */
+    .btn{position:relative;overflow:hidden;isolation:isolate}
+    .btn-primary{background:linear-gradient(160deg,#2b7f7c 0%,var(--deep-2) 38%,var(--deep) 100%);box-shadow:0 14px 30px rgba(7,63,71,.28),0 3px 8px rgba(7,63,71,.18),inset 0 1px 0 rgba(255,255,255,.45),inset 0 -2px 6px rgba(0,0,0,.18)}
+    .btn-primary::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 48%,transparent 62%);transform:translateX(-130%);transition:transform .7s ease;pointer-events:none}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 20px 38px rgba(7,63,71,.32),0 4px 10px rgba(7,63,71,.2),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -2px 6px rgba(0,0,0,.15)}
+    .btn-primary:hover::after{transform:translateX(130%)}
+    .btn-primary:active{transform:translateY(0) scale(.99)}
+    .btn-light{background:linear-gradient(165deg,rgba(255,255,255,.95),rgba(255,255,255,.62));backdrop-filter:blur(10px);box-shadow:0 10px 24px rgba(7,63,71,.12),inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.4)}
+    .btn-light:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 30px rgba(7,63,71,.16),inset 0 1px 0 #fff}
+    /* --- Glassier sticky header --- */
+    .site-header{background:rgba(251,253,253,.72);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 10px 30px rgba(7,63,71,.06),inset 0 -1px 0 rgba(255,255,255,.6)}
+    .brand-logo{filter:drop-shadow(0 4px 10px rgba(7,63,71,.16))}
+    .brand-mark{box-shadow:0 8px 18px rgba(22,136,173,.35),inset 0 1px 0 rgba(255,255,255,.6)}
+    /* --- Hero: living gradient, floating glass, shine sweep --- */
+    .hero{background:radial-gradient(circle at 13% 8%,#d9f4f2 0,transparent 38%),linear-gradient(135deg,#f8fcfb 32%,#e8f7f7 55%,#dcf2f4 82%,#e8f7f7 100%);background-size:100% 100%,220% 220%;animation:heroPan 16s ease-in-out infinite alternate}
+    @keyframes heroPan{from{background-position:0 0,0% 40%}to{background-position:0 0,90% 60%}}
+    .hero-card{background:linear-gradient(150deg,#d3f4f1,#71d3d0 42%,#2ba3ae 78%,#178e9f);background-size:180% 180%;animation:heroPan 12s ease-in-out infinite alternate;box-shadow:0 34px 80px rgba(7,63,71,.24),0 6px 18px rgba(7,63,71,.14),inset 0 1px 0 rgba(255,255,255,.65),inset 0 -30px 60px rgba(5,71,79,.14)}
+    .hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.34) 47%,transparent 60%);transform:translateX(-140%);animation:shine 7s ease-in-out infinite;pointer-events:none}
+    @keyframes shine{0%,55%{transform:translateX(-140%)}85%,100%{transform:translateX(140%)}}
+    .crystal{animation:floaty 7s ease-in-out infinite}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .orb.one{animation:drift 11s ease-in-out infinite alternate}
+    .orb.two{animation:drift 9s ease-in-out infinite alternate-reverse;background:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 14px 30px rgba(5,71,79,.14)}
+    @keyframes drift{from{transform:translate(0,0)}to{transform:translate(-16px,14px)}}
+    .floating-note{background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(255,255,255,.72));backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);box-shadow:0 24px 50px rgba(7,63,71,.2),inset 0 1px 0 #fff;animation:floaty 8s ease-in-out infinite}
+    .launch-chip{background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(255,255,255,.55));backdrop-filter:blur(10px);box-shadow:0 8px 20px rgba(7,63,71,.09),inset 0 1px 0 #fff}
+    @media(hover:hover){.hero-visual{perspective:1100px}.hero-card{transition:transform .6s ease}.hero-visual:hover .hero-card{transform:rotateY(-3deg) rotateX(1.5deg)}}
+    /* --- Glass trust bar --- */
+    .trust-inner{background:linear-gradient(165deg,rgba(255,255,255,.92),rgba(255,255,255,.74));backdrop-filter:blur(16px) saturate(1.35);-webkit-backdrop-filter:blur(16px) saturate(1.35);box-shadow:0 22px 48px rgba(7,63,71,.13),inset 0 1px 0 #fff}
+    /* --- Cards: frosted glass, candy top-gloss, 3D hover lift --- */
+    .service-card,.review-card,.form-card,.location-card,.principle{background:linear-gradient(168deg,rgba(255,255,255,.97),rgba(244,251,250,.86));box-shadow:0 12px 32px rgba(7,63,71,.07),inset 0 1px 0 #fff}
+    .service-card::before,.review-card::before{content:"";position:absolute;left:0;right:0;top:0;height:52%;background:linear-gradient(180deg,rgba(255,255,255,.75),transparent);opacity:.55;pointer-events:none}
+    .service-card{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+    .service-card:hover{transform:translateY(-8px);box-shadow:0 30px 55px rgba(7,63,71,.16),0 6px 16px rgba(7,63,71,.08),inset 0 1px 0 #fff}
+    .service-icon{background:linear-gradient(150deg,#eafaf8,#cdeeea);box-shadow:0 8px 16px rgba(7,63,71,.12),inset 0 1px 0 #fff,inset 0 -3px 6px rgba(97,157,152,.25)}
+    .review-card{position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease}
+    .review-card:hover{transform:translateY(-6px);box-shadow:0 26px 48px rgba(7,63,71,.14),inset 0 1px 0 #fff}
+    .review-card:nth-child(2):hover{transform:translateY(16px)}
+    .smart-guide{background:linear-gradient(130deg,rgba(228,244,242,.9),rgba(249,252,252,.75) 58%);backdrop-filter:blur(12px);box-shadow:0 26px 60px rgba(22,71,73,.13),inset 0 1px 0 #fff}
+    .guide-result{background:linear-gradient(155deg,#1d5b5e,var(--deep) 55%,#0d3438);box-shadow:0 24px 50px rgba(7,63,71,.3),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -24px 44px rgba(0,0,0,.22)}
+    .guide-option{box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(7,63,71,.06)}
+    .guide-option:hover,.guide-option.active{background:linear-gradient(160deg,#2b7f7c,var(--deep));box-shadow:0 10px 20px rgba(7,63,71,.24),inset 0 1px 0 rgba(255,255,255,.4)}
+    .experience-card{box-shadow:0 16px 36px rgba(7,63,71,.1),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .35s ease,box-shadow .35s ease}
+    .experience-card:hover{transform:translateY(-5px);box-shadow:0 26px 48px rgba(7,63,71,.16),inset 0 1px 0 rgba(255,255,255,.6)}
+    /* --- Photos: gloss overlay + gentle zoom --- */
+    .experience-image img,.portrait-placeholder img{transition:transform 1.2s ease}
+    .experience-image:hover img,.portrait-placeholder:hover img{transform:scale(1.045)}
+    .experience-image::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(255,255,255,.22),transparent 42%);pointer-events:none}
+    .portrait-placeholder{box-shadow:0 30px 70px rgba(7,63,71,.2),inset 0 1px 0 rgba(255,255,255,.5)}
+    .image-caption{background:linear-gradient(165deg,rgba(6,66,74,.82),rgba(4,55,61,.68));backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+    .map-pin{box-shadow:0 18px 34px rgba(7,63,71,.3),inset 0 2px 0 rgba(255,255,255,.5);animation:floaty 6s ease-in-out infinite}
+    /* --- Form: frosted card, glowing focus --- */
+    .form-card{box-shadow:0 28px 64px rgba(7,63,71,.13),inset 0 1px 0 #fff}
+    input,select,textarea{background:linear-gradient(180deg,#fff,#f7fbfb);box-shadow:inset 0 2px 5px rgba(7,63,71,.05)}
+    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(22,174,176,.14),0 8px 20px rgba(7,63,71,.08),inset 0 2px 5px rgba(7,63,71,.04)}
+    /* --- CTA: candy gradient + shine --- */
+    .cta{background:linear-gradient(125deg,var(--aqua),#9be5e1 42%,#c9f2ec 72%,#d8f6f4);background-size:200% 200%;animation:heroPan 13s ease-in-out infinite alternate;box-shadow:0 30px 64px rgba(7,63,71,.18),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -26px 50px rgba(7,63,71,.07)}
+    /* --- Scroll reveal: sections rise into view --- */
+    .reveal{opacity:0;transform:translateY(26px) scale(.995)}
+    .reveal.in{opacity:1;transform:none}
+
+    /* ==== Gel layer (2026-10-12): lighter background + dynamic jelly finish.
+       Builds on the polish layer. Presentation only — logo, structure, and content unchanged. ==== */
+    /* --- Bright, living page background: soft gel blobs drifting behind everything --- */
+    body{background-color:#fdffff;background-image:radial-gradient(560px 420px at 8% 12%,rgba(143,211,205,.34),transparent 70%),radial-gradient(640px 480px at 92% 22%,rgba(140,225,235,.30),transparent 70%),radial-gradient(700px 520px at 50% 88%,rgba(168,240,225,.32),transparent 70%),linear-gradient(180deg,#ffffff,#f4fbfa 55%,#eefaf7);background-size:130% 130%,130% 130%,130% 130%,100% 100%;background-attachment:fixed;animation:gelDrift 22s ease-in-out infinite alternate}
+    @keyframes gelDrift{from{background-position:0% 0%,100% 0%,50% 100%,0 0}to{background-position:12% 8%,88% 12%,44% 92%,0 0}}
+    .section-soft{background:linear-gradient(180deg,rgba(230,248,245,.85),rgba(240,250,248,.65))}
+    /* --- The two dark sections become bright aqua gel --- */
+    .section-dark{background:linear-gradient(150deg,#eafaf6 0%,#d7f3ef 48%,#e8fbf8 100%);background-size:180% 180%;animation:heroPan 14s ease-in-out infinite alternate;color:var(--ink)}
+    .section-dark .eyebrow{color:var(--deep-2)!important}
+    .section-dark .section-head h2,.section-dark .faq-intro h2{color:var(--deep)!important}
+    .section-dark .section-head p{color:#47696e!important}
+    .section-dark .faq-intro p{color:#47696e}
+    .trust-intro{background:linear-gradient(150deg,#bfe9e4,#8fd3cd);color:var(--deep)}
+    .trust-intro span{color:#2f6967}
+    .top-note{background:linear-gradient(90deg,#a8e6df,#8fd3cd 55%,#a8e6df);color:var(--deep)}
+    .top-note span{background:var(--deep-2)}
+    /* --- FAQ on light gel --- */
+    .faq-list{border-top-color:rgba(22,71,73,.16)}
+    .faq-item{border-bottom-color:rgba(22,71,73,.16)}
+    .faq-question{color:var(--deep)}
+    .faq-question span{border-color:rgba(22,71,73,.28)}
+    .faq-question[aria-expanded="true"] span{background:var(--deep);color:#fff}
+    .faq-answer p{color:#41696b}
+    /* --- Smart guide result: bright turquoise gel instead of dark teal --- */
+    .guide-result{background:linear-gradient(155deg,#c2f2ea,#74ccc2 58%,#4cb3aa);color:var(--deep);box-shadow:0 24px 50px rgba(23,110,104,.28),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -24px 44px rgba(23,110,104,.16)}
+    .guide-result small{color:#14504c}
+    .guide-result p{color:#17403d}
+    .guide-result a{color:#0d4a47;text-decoration:underline;text-underline-offset:3px}
+    /* --- Experience cards: gel tints, photo card brightened --- */
+    .experience-card:nth-child(2){background:linear-gradient(160deg,#c9f0ec,#8fd3cd)}
+    .experience-card.visual{background:linear-gradient(rgba(10,80,88,.30),rgba(10,80,88,.44)),url('assets/dental-treatment-room.jpg') center/cover}
+    .image-caption{background:linear-gradient(165deg,rgba(255,255,255,.88),rgba(255,255,255,.68));color:var(--deep);box-shadow:inset 0 1px 0 #fff,0 14px 30px rgba(7,63,71,.16)}
+    /* --- Footer: pale gel instead of near-black --- */
+    footer{background:linear-gradient(170deg,#e6f6f3,#cfeeea 70%,#e2f4f1);color:var(--ink)}
+    footer h3{color:var(--deep-2)}
+    .footer-links{color:#2c5558}
+    .todo-contact{color:#527a78}
+    .footer-brand p{color:#527a78}
+    .footer-bottom{border-top-color:rgba(22,71,73,.15);color:#527a78}
+    .footer-brand .brand{background:rgba(255,255,255,.85);box-shadow:0 10px 24px rgba(7,63,71,.12),inset 0 1px 0 #fff}
+    /* --- Jelly buttons: brighter gel gradient, springy squish --- */
+    .btn{transition:transform .45s cubic-bezier(.34,1.8,.5,1),box-shadow .3s ease,background .3s ease}
+    .btn-primary{background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.5),transparent 55%),linear-gradient(165deg,#45bcb2,#1f8a81 60%,#177267);background-size:100% 100%,180% 180%;animation:heroPan 9s ease-in-out infinite alternate;box-shadow:0 16px 32px rgba(23,114,103,.30),0 4px 10px rgba(23,114,103,.18),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(9,80,73,.28)}
+    .btn-primary:hover{transform:translateY(-3px) scale(1.045,.96)}
+    .btn-primary:active{transform:translateY(1px) scale(.95,1.03)}
+    .guide-option{transition:transform .4s cubic-bezier(.34,1.8,.5,1),background .25s ease,box-shadow .25s ease}
+    .guide-option:hover{transform:translateY(-2px) scale(1.05,.95)}
+    .guide-option:active{transform:scale(.94,1.04)}
+    /* --- Gel cards: rounder, juicier gradients, bouncy hover --- */
+    .service-card,.review-card,.experience-card,.form-card,.location-card,.smart-guide{border-radius:32px}
+    .service-card,.review-card,.form-card,.location-card{background:radial-gradient(130% 70% at 50% 0%,rgba(255,255,255,1),transparent 60%),linear-gradient(168deg,rgba(255,255,255,.98),rgba(233,248,245,.88));transition:transform .5s cubic-bezier(.34,1.65,.5,1),box-shadow .35s ease,border-color .3s ease}
+    .service-card:hover{transform:translateY(-9px) scale(1.018,.995)}
+    .review-card:hover{transform:translateY(-7px) scale(1.015,.995)}
+    .review-card:nth-child(2):hover{transform:translateY(15px) scale(1.015,.995)}
+    .experience-card{transition:transform .5s cubic-bezier(.34,1.65,.5,1),box-shadow .35s ease}
+    .experience-card:hover{transform:translateY(-6px) scale(1.02,.99)}
+    .service-icon{border-radius:16px;background:radial-gradient(120% 90% at 50% 0%,#ffffff,transparent 60%),linear-gradient(150deg,#eafaf8,#b8e6e0)}
+    .service-card:hover .service-icon{animation:jelly .7s ease}
+    @keyframes jelly{0%{transform:scale(1,1)}25%{transform:scale(1.18,.82)}50%{transform:scale(.88,1.12)}72%{transform:scale(1.06,.95)}100%{transform:scale(1,1)}}
+    /* --- Hero gel: brighter card, jelly crystal, bubblier orbs --- */
+    .hero-card{background:linear-gradient(150deg,#e2faf6,#8fe0da 42%,#3fb3ac 78%,#25a39b);background-size:190% 190%}
+    .crystal{animation:gelFloat 6s ease-in-out infinite}
+    @keyframes gelFloat{0%,100%{transform:translateY(0) scale(1,1)}30%{transform:translateY(-12px) scale(.985,1.015)}55%{transform:translateY(-4px) scale(1.012,.988)}75%{transform:translateY(-14px) scale(.99,1.01)}}
+    .orb{box-shadow:inset 0 2px 6px rgba(255,255,255,.8),inset 0 -8px 14px rgba(23,110,104,.14),0 12px 26px rgba(23,110,104,.12)}
+    .map-pin{background:linear-gradient(160deg,#3fbdb2,#177267);animation:gelFloat 5.5s ease-in-out infinite}
+    .map-placeholder{background-color:#e6f6f3}
+
+    /* ==== Hero photo + contrast layer (2026-10-12): reception photo at the top,
+       stronger colour contrast throughout. Presentation only. ==== */
+    :root{--deep:#0f3a3d;--deep-2:#1e5c59;--teal:#2e7d76;--muted:#46696a;--line:#b5d4d1;--ink:#133336}
+    body{color:#133336}
+    /* --- Reception photo becomes the hero visual, with a slow Ken Burns drift --- */
+    .hero-card{background-color:#dff3f5;background-image:linear-gradient(165deg,rgba(255,255,255,.22),rgba(255,255,255,0) 42%,rgba(9,60,66,.12)),url('assets/dental-reception.jpg');background-size:cover;background-position:50% 40%;animation:heroPhotoPan 18s ease-in-out infinite alternate;box-shadow:0 34px 80px rgba(9,58,64,.26),0 6px 18px rgba(9,58,64,.15),inset 0 1px 0 rgba(255,255,255,.7)}
+    @keyframes heroPhotoPan{from{background-position:50% 36%}to{background-position:50% 58%}}
+    .hero-card .crystal,.hero-card .orb{display:none}
+    /* --- Stronger contrast: deeper text, firmer borders, punchier accents --- */
+    .hero-lede{color:#2e4f52}
+    .hero-note{color:#47696c}
+    h1 em{color:#22756d}
+    .eyebrow{color:#1e5c59}
+    .nav-links{color:#274e50}
+    .section-head p,.service-card p,.split-copy p,.request-copy p,.location-card>p,.faq-answer p{color:#33565a}
+    .review-card blockquote{color:#2e4f52}
+    .trust-item span,.principle span,.review-meta span,.location-list span,.floating-note span{color:#46696a}
+    .service-card,.review-card,.form-card,.location-card,.trust-inner{border-color:#a9ccc9}
+    .faq-answer p{color:#2e4f52}
+    .section-dark .section-head p{color:#2b4f52!important}
+    .guide-option{border-color:#9fc6c1;color:#0f3a3d}
+    .demo-callout{color:#33565a}
+    .check{color:#3d5f61}
+    footer h3{color:#1e5c59}
+    .footer-links{color:#274e50}
+    .todo-contact,.footer-brand p,.footer-bottom{color:#3d6366}
+    .btn-primary{box-shadow:0 16px 34px rgba(9,58,64,.32),0 4px 10px rgba(9,58,64,.2),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 7px rgba(0,0,0,.22)}
+
+    /* ==== Stats band layer (2026-10-12): count-up figures, Dental Boutique-style layout
+       in Crystalline's own glass design. Figures: Vaughan practice public data. ==== */
+    .stats-section{position:relative;z-index:1;padding:28px 0 2px}
+    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .stat-card{display:flex;align-items:center;gap:24px;padding:30px 32px;border:1px solid #a9ccc9;border-radius:28px;background:radial-gradient(130% 80% at 50% 0%,rgba(255,255,255,1),transparent 60%),linear-gradient(168deg,rgba(255,255,255,.98),rgba(233,248,245,.9));box-shadow:0 18px 40px rgba(9,58,64,.10),inset 0 1px 0 #fff}
+    .stat-num{font:500 clamp(2.7rem,4.6vw,4rem)/1 "DM Sans",sans-serif;letter-spacing:-.04em;color:var(--deep);white-space:nowrap}
+    .stat-label{color:#33565a;font:600 .98rem/1.45 "DM Sans",sans-serif}
+    .stats-note{margin:14px 4px 0;color:#527a78;font-size:.74rem}
+    @media (max-width:980px){.stats-grid{grid-template-columns:1fr}.stat-card{padding:24px 26px}}
+
+
+    /* ==== Version B layer: brand #009FB3 + glacier-glass background.
+       Teeth-and-glacier direction: near-white ice background, translucent glass, brand colour as the signature. ==== */
+    :root{--brand:#009FB3;--brand-dark:#007C8B;--brand-tint:#72CAD5}
+    ::selection{background:#72CAD5;color:#123a3c}
+    body{background-color:#feffff;background-image:radial-gradient(560px 420px at 8% 12%,rgba(114,202,213,0.3),transparent 70%),radial-gradient(640px 480px at 92% 22%,rgba(0,159,179,0.16),transparent 70%),radial-gradient(700px 520px at 50% 88%,rgba(114,202,213,0.26),transparent 70%),linear-gradient(180deg,#ffffff,#f6fcfc 55%,#eef8f8);background-size:130% 130%,130% 130%,130% 130%,100% 100%;background-attachment:fixed;animation:gelDrift 22s ease-in-out infinite alternate}
+    .eyebrow{color:#007C8B}
+    h1 em{color:#009FB3}
+    .top-note{background:linear-gradient(90deg,#ffffff,rgba(114,202,213,0.55) 55%,#ffffff);color:#173c3d;box-shadow:inset 0 -1px 0 rgba(0,159,179,0.25)}
+    .top-note span{background:#009FB3}
+    .btn-primary{background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.55),transparent 55%),linear-gradient(165deg,#72CAD5,#009FB3 52%,#007C8B);background-size:100% 100%,180% 180%;animation:heroPan 9s ease-in-out infinite alternate;box-shadow:0 16px 32px rgba(0,159,179,0.35),0 4px 10px rgba(0,159,179,0.22),inset 0 2px 0 rgba(255,255,255,.6),inset 0 -4px 8px rgba(0,124,139,0.3)}
+    .btn-light{color:#007C8B}
+    .brand-mark{background:linear-gradient(145deg,#72CAD5,#009FB3 55%,#007C8B)}
+    .launch-chip{border-color:rgba(0,159,179,0.35)}
+    .launch-chip::before{background:#009FB3;box-shadow:0 0 0 5px rgba(0,159,179,0.14)}
+    .hero{background:radial-gradient(circle at 13% 8%,rgba(114,202,213,0.5) 0,transparent 42%),linear-gradient(135deg,#ffffff 30%,#f2fafa 62%,rgba(114,202,213,0.38) 100%);background-size:100% 100%,220% 220%;animation:heroPan 16s ease-in-out infinite alternate}
+    .hero-card{background-image:linear-gradient(150deg,rgba(255,255,255,.62),rgba(114,202,213,0.35) 46%,rgba(0,159,179,0.28)),url('assets/dental-reception.jpg');background-size:cover;background-position:50% 40%;box-shadow:0 34px 80px rgba(0,159,179,0.3),0 6px 18px rgba(0,159,179,0.18),inset 0 1px 0 #fff,inset 0 -30px 60px rgba(0,124,139,0.18)}
+    .trust-intro{background:linear-gradient(150deg,#72CAD5,#009FB3);color:#10383b}
+    .trust-intro span{color:#0d4443}
+    .trust-item svg{color:#009FB3}
+    .section-dark{background:linear-gradient(150deg,#ffffff 0%,rgba(114,202,213,0.4) 48%,#ffffff 100%);background-size:180% 180%;animation:heroPan 14s ease-in-out infinite alternate;color:var(--ink)}
+    .section-dark .eyebrow{color:#007C8B!important}
+    .section-dark .section-head h2,.section-dark .faq-intro h2{color:#173c3d!important}
+    .section-dark .section-head p{color:#47696e!important}
+    .smart-guide{border-color:rgba(0,159,179,0.3)}
+    .guide-kicker{color:#007C8B}
+    .guide-result{background:linear-gradient(155deg,#ffffff,#72CAD5 55%,#009FB3);color:#173c3d;box-shadow:0 24px 50px rgba(0,159,179,0.3),inset 0 1px 0 #fff,inset 0 -24px 44px rgba(0,124,139,0.14)}
+    .guide-result small{color:#007C8B}
+    .guide-result p{color:#1d4a49}
+    .guide-result a{color:#007C8B;text-decoration:underline;text-underline-offset:3px}
+    .guide-option:hover,.guide-option.active{background:linear-gradient(160deg,#009FB3,#007C8B);border-color:#007C8B;color:#fff}
+    .service-icon{background:radial-gradient(120% 90% at 50% 0%,#ffffff,transparent 60%),linear-gradient(150deg,#ffffff,rgba(114,202,213,0.65));color:#007C8B}
+    .quote-mark{color:#009FB3}
+    .faq-question[aria-expanded="true"] span{background:#009FB3;color:#fff}
+    .check input{accent-color:#009FB3}
+    input:focus,select:focus,textarea:focus{border-color:#009FB3;box-shadow:0 0 0 4px rgba(0,159,179,0.16),0 8px 20px rgba(0,159,179,0.1),inset 0 2px 5px rgba(7,63,71,.04)}
+    .demo-callout{border-left-color:#009FB3}
+    .form-status{background:rgba(114,202,213,0.35);color:#007C8B}
+    .experience-card:nth-child(2){background:linear-gradient(160deg,#72CAD5,#009FB3);color:#123a3c}
+    .map-pin{background:linear-gradient(160deg,#009FB3,#007C8B)}
+    .cta{background:linear-gradient(125deg,#72CAD5,#ffffff 52%,#72CAD5);background-size:200% 200%;animation:heroPan 13s ease-in-out infinite alternate;box-shadow:0 30px 64px rgba(0,159,179,0.22),inset 0 1px 0 #fff,inset 0 -26px 50px rgba(0,159,179,0.1)}
+    footer{background:linear-gradient(170deg,#ffffff,rgba(114,202,213,0.32) 70%,#ffffff);color:var(--ink)}
+    footer h3{color:#007C8B}
+    .stat-num{color:#007C8B}
+
+    /* ==== Final Version B harmony layer (2026-10-12): every remaining font colour
+       and graphic accent pulled into the #009FB3 family. Logo untouched. ==== */
+    h1,.section-head h2,.split-copy h2,.request-copy h2,.cta h2{color:#0B3941}
+    .section-dark .section-head h2,.section-dark .faq-intro h2{color:#0B3941!important}
+    .service-card h3,.location-card h3,.experience-card h3,.smart-guide h3,.floating-note strong,label{color:#0B3941}
+    .nav-links a:not(.btn):hover{color:#009FB3}
+    .guide-option{border-color:#72CAD5;color:#0B3941}
+    .faq-question span{border-color:rgba(0,124,139,.35)}
+    .footer-links a:hover{color:#009FB3}
+
+
+    /* ==== Contrast layer (2026-10-12): near-black dark turquoise blocks restored,
+       like the original site — dark/light alternation against the glacier background. ==== */
+    :root{--contrast-dark:#00333C}
+    h1,.section-head h2,.split-copy h2,.request-copy h2,.cta h2,.service-card h3,.location-card h3,.smart-guide h3,.floating-note strong{color:#00333C}
+    .top-note{background:linear-gradient(90deg,#00333C,#004854,#00333C);color:#E9F6F5}
+    .top-note span{background:#72CAD5}
+    .trust-intro{background:linear-gradient(150deg,#004854,#00333C);color:#fff}
+    .trust-intro span{color:#72CAD5}
+    .section-dark{background:linear-gradient(160deg,#004854,#00333C 58%,#00333C);background-size:180% 180%;animation:heroPan 16s ease-in-out infinite alternate;color:#F4F7F7}
+    .section-dark .eyebrow{color:#72CAD5!important}
+    .section-dark .section-head h2,.section-dark .faq-intro h2{color:#fff!important}
+    .section-dark .section-head p{color:rgba(233,246,245,.8)!important}
+    .section-dark .faq-intro p{color:rgba(233,246,245,.78)}
+    .faq-list{border-top-color:rgba(255,255,255,.18)}
+    .faq-item{border-bottom-color:rgba(255,255,255,.18)}
+    .faq-question{color:#fff}
+    .faq-question span{border-color:rgba(255,255,255,.32)}
+    .faq-question[aria-expanded="true"] span{background:#009FB3;color:#fff}
+    .faq-answer p{color:rgba(233,246,245,.82)}
+    .guide-result{background:linear-gradient(155deg,#004854,#00333C 60%,#00333C);color:#fff;box-shadow:0 24px 50px rgba(0,51,60,0.35),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -24px 44px rgba(0,0,0,.25)}
+    .guide-result small{color:#72CAD5}
+    .guide-result p{color:rgba(233,246,245,.85)}
+    .guide-result a{color:#72CAD5}
+    .stat-num{color:#00333C}
+    .image-caption{background:linear-gradient(165deg,rgba(0,51,60,0.88),rgba(0,51,60,0.78));color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+    .experience-card:nth-child(3){background:linear-gradient(160deg,#004854,#00333C);color:#fff}
+    .map-pin{background:linear-gradient(160deg,#004854,#00333C)}
+    footer{background:linear-gradient(170deg,#004854,#00333C 72%,#00333C);color:#E9F6F5}
+    footer h3{color:#72CAD5}
+    .footer-links{color:#D9EDED}
+    .todo-contact,.footer-brand p{color:rgba(233,246,245,.68)}
+    .footer-bottom{border-top-color:rgba(255,255,255,.14);color:rgba(233,246,245,.58)}
+  </style>
+  <link rel="stylesheet" href="assets/glacier.css">
+  <link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+  <div class="top-note"><div class="shell"><span aria-hidden="true"></span>Website concept · Opening details to be confirmed</div></div>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Crystalline Dental home"><img class="brand-logo" src="assets/crystalline-logo.png" alt="Crystalline Dental" width="376" height="201"></a>
+      <div class="nav-links"><a href="#services">Services</a><a href="#doctor">Our dentist</a><a href="#experience">The experience</a><a href="#location">Location</a><a class="btn btn-primary" href="#request">Request an appointment</a></div>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="launch-chip">A new Crystalline Dental location</div>
+          <h1>Modern dentistry, <em>closer to home.</em></h1>
+          <p class="hero-lede">The established Vaughan practice is preparing a second home in Bayview Village. Thoughtful care, a calm environment, and clear conversations—reimagined for North York.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#request">Request an appointment <span aria-hidden="true">↗</span></a><a class="btn btn-light" href="#services">Explore care options</a></div>
+          <p class="hero-note">Demo site: appointment requests are not submitted or stored.</p>
+        </div>
+        <div class="hero-visual" aria-label="Abstract crystalline brand artwork">
+          <div class="hero-card"><span class="orb one"></span><span class="orb two"></span><span class="crystal"></span></div>
+          <div class="floating-note"><strong>Bayview Village</strong><span>Second location · Exact opening date and address coming soon.</span></div>
+        </div>
+      </div>
+    <section class="stats-section" aria-label="Crystalline Dental practice figures">
+      <div class="shell">
+        <div class="stats-grid">
+          <div class="stat-card reveal"><span class="stat-num" data-count="1200" data-suffix="+">1,200+</span><span class="stat-label">5-star Google reviews · Bayview Village</span></div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="25000" data-suffix="+">25,000+</span><span class="stat-label">Patients seen · Bayview Village</span></div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="4500" data-suffix="+">4,500+</span><span class="stat-label">Implants completed · Bayview Village</span></div>
+        </div>
+        <p class="stats-note">Placeholder figures for the Bayview Village concept — for design purposes only, to be replaced with the clinic's real numbers before launch.</p>
+      </div>
+    </section>
+      <div class="shell trust">
+        <div class="trust-inner">
+          <div class="trust-item trust-intro"><div><strong>Built around a better visit</strong><span>Clear, calm and considered from the first hello.</span></div></div>
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 5 6v5c0 4.7 2.7 8.3 7 10 4.3-1.7 7-5.3 7-10V6l-7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg><div><strong>Patient-first</strong><span>Time for questions and clear next steps.</span></div></div>
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 1.6 4.3L18 9l-4.4 1.7L12 15l-1.6-4.3L6 9l4.4-1.7L12 3Z"></path><path d="m18.5 15 .7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z"></path></svg><div><strong>Smart guidance</strong><span>A dynamic guide to help plan your visit.</span></div></div>
+          <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 18 18 5M6 5h5v5M13 14h5v5"></path></svg><div><strong>Conveniently local</strong><span>Coming to Bayview Village, North York.</span></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">Care, clearly organized</p><h2>A thoughtful path for every smile.</h2></div>
+          <div><p>These categories come from Crystalline Dental’s current Vaughan website. Their availability at Bayview Village must be approved before launch.</p><span class="confirm-note">Bayview availability pending</span></div>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal"><div class="service-number"><span>01</span><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21c4-3 6-7.2 6-11a6 6 0 1 0-12 0c0 3.8 2 8 6 11Z"></path><path d="M9.5 10.5 11 12l3.5-3.5"></path></svg></span></div><h3>Family dentistry</h3><p>Routine exams, professional cleanings, children’s dentistry, and emergency dental care are listed for Vaughan.</p><span class="tbd">Bayview availability to confirm</span></article>
+          <article class="service-card reveal"><div class="service-number"><span>02</span><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 4c-2 2-2 6 0 8l4 8 4-8c2-2 2-6 0-8-1.2-1.2-2.8-.7-4 1-1.2-1.7-2.8-2.2-4-1Z"></path></svg></span></div><h3>Dental implants</h3><p>Vaughan lists All-on-4, All-on-6, implant-supported dentures, and full-mouth implants.</p><span class="tbd">Bayview availability to confirm</span></article>
+          <article class="service-card reveal"><div class="service-number"><span>03</span><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 12c2.6-5.3 13.4-5.3 16 0-2.6 5.3-13.4 5.3-16 0Z"></path><path d="M9 12h6"></path></svg></span></div><h3>Cosmetic dentistry</h3><p>Dental veneers, teeth whitening, and dental bonding are listed for the Vaughan clinic.</p><span class="tbd">Bayview availability to confirm</span></article>
+          <article class="service-card reveal"><div class="service-number"><span>04</span><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 17c4-1 7-4 8-8l1-4 4 4-4 1c-4 1-7 4-8 8l-1 1v-2Z"></path><path d="M5 5h5M7.5 2.5v5"></path></svg></span></div><h3>Wisdom teeth removal</h3><p>Impacted and retained wisdom teeth, plus surgical tooth extraction, are listed for Vaughan.</p><span class="tbd">Bayview availability to confirm</span></article>
+          <article class="service-card reveal"><div class="service-number"><span>05</span><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 13a8 8 0 1 1 16 0"></path><path d="M7 13a5 5 0 0 1 10 0M12 13v6"></path></svg></span></div><h3>Sleep dentistry</h3><p>General anesthesia, IV sedation, oral sedation, and nitrous oxide are listed for Vaughan.</p><span class="tbd">Bayview availability to confirm</span></article>
+          <article class="service-card reveal"><div class="service-number"><span>06</span><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 3h10l2 6-7 12L5 9l2-6Z"></path><path d="M5 9h14M9 3l3 6 3-6"></path></svg></span></div><h3>Root canal therapy</h3><p>Consultation, treatment information, and root canal care are listed for the Vaughan clinic.</p><span class="tbd">Bayview availability to confirm</span></article>
+        </div>
+        <div class="smart-guide reveal" aria-labelledby="guide-title"><div><span class="guide-kicker">Smart visit guide · Demo</span><h3 id="guide-title">Not sure where to begin?</h3><p>Choose what best describes your visit. This private, in-browser guide suggests the most relevant section; it does not diagnose, save, or send health information.</p><div class="guide-options"><button class="guide-option" type="button" data-guide="routine">Routine care</button><button class="guide-option" type="button" data-guide="urgent">Tooth pain or urgent concern</button><button class="guide-option" type="button" data-guide="missing">Missing tooth</button><button class="guide-option" type="button" data-guide="smile">Smile goals</button><button class="guide-option" type="button" data-guide="anxiety">Dental anxiety</button></div></div><div class="guide-result" aria-live="polite"><div><small>Suggested starting point</small><h4 id="guide-result-title">Choose a visit reason</h4><p id="guide-result-copy">Your suggested care category will appear here, using the service structure from the Vaughan clinic.</p></div><a href="#request">Request a follow-up ↗</a></div></div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="doctor">
+      <div class="shell doctor-grid">
+        <div class="portrait-placeholder reveal" role="img" aria-label="Dr. Milad Karamlou"><img src="assets/dr-milad-karamlou.jpg" alt="Dr. Milad Karamlou" width="683" height="1024"></div>
+        <div class="split-copy reveal"><p class="eyebrow">Meet the owner</p><h2>Dr. Milad Karamlou</h2><p class="lead">A graduate of the Schulich School of Medicine and Dentistry at Western University, Dr. Karamlou continued his training in the General Practice Residency program at The Ohio State University.</p><p>His current Vaughan profile describes training and continuing education in oral surgery, implant dentistry, anesthesia, cosmetic dentistry, and comprehensive care. It also notes that he is certified in IV sedation. This verified profile is carried forward here to connect the two locations.</p><div class="principles"><div class="principle"><strong>Hospital-based training</strong><span>General Practice Residency at The Ohio State University.</span></div><div class="principle"><strong>Areas of focus</strong><span>Oral surgery, implant dentistry, and sedation dentistry.</span></div><div class="principle"><strong>Comprehensive care</strong><span>A broad clinical background shaped around individual needs.</span></div><div class="principle"><strong>Source continuity</strong><span>Biography and portrait from the Vaughan clinic website.</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="experience">
+      <div class="shell">
+        <div class="section-head reveal"><div><p class="eyebrow" style="color:#7ddbd6">The clinic experience</p><h2 style="color:#fff">Clinical clarity, with a human touch.</h2></div><p style="color:#abd0d1">A visual direction for a modern practice that feels composed and approachable—never cold or overly clinical.</p></div>
+        <div class="experience-grid">
+          <div class="experience-image reveal"><img src="assets/dental-reception.jpg" alt="Concept image of a bright, contemporary dental reception space" width="1600" height="1100"><div class="image-caption">Concept imagery for design direction only. Replace with approved photography of the completed Bayview Village clinic.</div></div>
+          <div class="experience-cards">
+            <article class="experience-card reveal"><small>01 · Arrival</small><h3>A calm welcome</h3><p>A clear, uncluttered entry experience with helpful cues from the start.</p></article>
+            <article class="experience-card reveal"><small>02 · Conversation</small><h3>Easy to understand</h3><p>Space to ask questions and understand what happens next.</p></article>
+            <article class="experience-card visual reveal"><small>03 · Care</small><h3>Modern by design</h3><p>Concept treatment-room imagery. Technology and treatment details to be confirmed before launch.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="request">
+      <div class="shell request-grid">
+        <div class="request-copy reveal"><p class="eyebrow">New patients</p><h2>Start with a simple request.</h2><p>Tell the clinic how to reach you and what kind of visit you’re looking for. On the final website, the team would follow up to confirm availability and details.</p><div class="demo-callout"><strong>Demo only:</strong> this form is interactive, but no information is transmitted or stored.</div></div>
+        <form class="form-card reveal" id="appointment-form">
+          <div class="form-row"><div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required="" placeholder="Your name"></div><div class="field"><label for="contact">Phone or email</label><input id="contact" name="contact" required="" placeholder="How should we reach you?"></div></div>
+          <div class="form-row"><div class="field"><label for="patient">Patient type</label><select id="patient" name="patient"><option>New patient</option><option>Existing Crystalline Dental patient</option><option>Not sure</option></select></div><div class="field"><label for="timing">Preferred timing</label><select id="timing" name="timing"><option>First available</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Not sure</option></select></div></div>
+          <div class="field"><label for="reason">What can we help with?</label><textarea id="reason" name="reason" placeholder="A short note is helpful. Please do not include sensitive health information in this demo."></textarea></div>
+          <label class="check"><input type="checkbox" required=""><span>I understand this is a non-submitting website demo and does not create an appointment.</span></label>
+          <button class="btn btn-primary" type="submit">Preview request confirmation <span aria-hidden="true">↗</span></button>
+          <div class="form-status" id="form-status" role="status" aria-live="polite">Demo complete — this is how a request confirmation would appear. No information was sent.</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-labelledby="reviews-title">
+      <div class="shell">
+        <div class="section-head reveal"><div><p class="eyebrow">Patient perspectives</p><h2 id="reviews-title">Real stories will live here.</h2></div><p>No review text has been invented. These cards show how approved patient feedback could be presented after consent and verification.</p></div>
+        <div class="reviews-track">
+          <article class="review-card reveal"><div class="quote-mark">“</div><blockquote>Approved patient review placeholder. Replace with a verified quotation before publication.</blockquote><div class="review-meta"><strong>Patient story 01</strong><span>Name and review source to be confirmed</span></div></article>
+          <article class="review-card reveal"><div class="quote-mark">“</div><blockquote>Approved patient review placeholder. Replace with a verified quotation before publication.</blockquote><div class="review-meta"><strong>Patient story 02</strong><span>Name and review source to be confirmed</span></div></article>
+          <article class="review-card reveal"><div class="quote-mark">“</div><blockquote>Approved patient review placeholder. Replace with a verified quotation before publication.</blockquote><div class="review-meta"><strong>Patient story 03</strong><span>Name and review source to be confirmed</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="faq">
+      <div class="shell faq-grid">
+        <div class="faq-intro reveal"><p class="eyebrow" style="color:#7ddbd6">Good to know</p><h2>Questions before your first visit.</h2><p>Final answers will be updated as opening details are approved.</p></div>
+        <div class="faq-list reveal">
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="true">When will the Bayview Village location open?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>The opening date has not yet been provided. This demo keeps that information clearly marked as coming soon.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Where exactly will the clinic be located?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>The exact address and directions are pending confirmation. Only Bayview Village, North York is shown in this concept.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Which dental services will be available?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>The categories above reflect services listed by the current Vaughan clinic. The final Bayview Village service list will be published only after this location confirms what it will offer.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Will the clinic accept insurance or direct billing?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>Insurance and payment information has not been confirmed for the Bayview Village location.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Can I book through this demo?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>No. The request form demonstrates the intended experience but does not transmit data or create an appointment.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="shell">
+        <div class="section-head reveal"><div><p class="eyebrow">Coming to North York</p><h2>A new home in Bayview Village.</h2></div><p>The exact address, directions, parking notes, transit details, phone number, and hours remain intentionally blank.</p></div>
+        <div class="location-grid">
+          <div class="map-placeholder reveal" role="img" aria-label="Map placeholder for the future Bayview Village clinic address"><div class="map-pin"><span>BV</span></div></div>
+          <div class="location-card reveal"><p class="eyebrow">Second location</p><h3>Bayview Village<br>North York, ON</h3><p>Detailed location information will be added when confirmed by the clinic.</p><ul class="location-list"><li><strong>Address</strong><span>TODO — exact suite and street address</span></li><li><strong>Phone</strong><span>TODO — Bayview Village contact number</span></li><li><strong>Hours</strong><span>TODO — confirmed opening hours</span></li><li><strong>Opening</strong><span>TODO — confirmed opening date</span></li></ul><a class="btn btn-primary" href="#request">Join the appointment list</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-wrap">
+      <div class="shell"><div class="cta reveal"><p class="eyebrow">A fresh chapter</p><h2>Be among the first to visit Crystalline Dental at Bayview Village.</h2><div class="cta-bottom"><p>Request a follow-up and the clinic can contact you once appointments and opening details are available.</p><a class="btn btn-primary" href="#request">Request an appointment <span aria-hidden="true">↗</span></a></div></div></div>
+    </section>
+  </main>
+  <footer>
+    <div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="#top" aria-label="Crystalline Dental home"><img class="brand-logo" src="assets/crystalline-logo.png" alt="Crystalline Dental" width="376" height="201"></a><p>A modern website concept for the second Crystalline Dental location, grounded in the Vaughan clinic’s established identity.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="#services">Services</a><a href="#doctor">Dr. Karamlou</a><a href="#experience">Experience</a><a href="#faq">FAQ</a></div></div><div><h3>Locations</h3><div class="footer-links"><span>Maple · Existing location</span><span>Bayview Village · Coming soon</span></div></div><div><h3>Contact</h3><div class="todo-contact"><span>Phone: TODO</span><span>Email: TODO</span><span>Address: TODO</span><span>Hours: TODO</span></div></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Crystalline Dental. Demo concept only.</span><span>Privacy · Accessibility · Terms — pages to be added</span></div></div>
+  </footer>
+  <div class="mobile-panel" aria-hidden="true"><a href="#services">Services</a><a href="#doctor">Our dentist</a><a href="#experience">The experience</a><a href="#location">Location</a><a class="btn btn-primary" href="#request">Request an appointment</a></div>
+  <script>
+    const menuButton=document.querySelector('.menu-btn');
+    const mobilePanel=document.querySelector('.mobile-panel');
+    function closeMenu(){document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');mobilePanel.setAttribute('aria-hidden','true');menuButton.textContent='☰'}
+    menuButton.addEventListener('click',()=>{const open=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',open);menuButton.setAttribute('aria-expanded',String(open));mobilePanel.setAttribute('aria-hidden',String(!open));menuButton.textContent=open?'×':'☰'});
+    mobilePanel.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+    document.querySelectorAll('.faq-question').forEach(button=>button.addEventListener('click',()=>{const wasOpen=button.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-question').forEach(item=>item.setAttribute('aria-expanded','false'));button.setAttribute('aria-expanded',String(!wasOpen))}));
+    document.getElementById('appointment-form').addEventListener('submit',event=>{event.preventDefault();const status=document.getElementById('form-status');status.classList.add('show');status.scrollIntoView({behavior:'smooth',block:'nearest'})});
+    const guideContent={routine:['Family dentistry','Routine exams, professional cleaning, and children’s dentistry are listed for the Vaughan clinic. Bayview availability still needs confirmation.'],urgent:['Emergency dental care','Emergency dental care is listed for Vaughan. Bayview availability is not yet confirmed; the clinic should advise on the right next step.'],missing:['Dental implants','Implant consultations and several implant treatment pathways are listed for Vaughan. Bayview availability still needs confirmation.'],smile:['Cosmetic dentistry','Veneers, whitening, bonding, and Invisalign are listed by the Vaughan practice. Bayview availability still needs confirmation.'],anxiety:['Sleep dentistry','The Vaughan clinic lists multiple sedation options. A clinician should discuss suitability; Bayview availability still needs confirmation.']};
+    document.querySelectorAll('.guide-option').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.guide-option').forEach(item=>item.classList.remove('active'));button.classList.add('active');const content=guideContent[button.dataset.guide];document.getElementById('guide-result-title').textContent=content[0];document.getElementById('guide-result-copy').textContent=content[1]}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    const counters=document.querySelectorAll('.stat-num');
+    const animateCount=el=>{const target=parseFloat(el.dataset.count);const decimals=parseInt(el.dataset.decimals||'0',10);const suffix=el.dataset.suffix||'';if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=target.toFixed(decimals)+suffix;return}const dur=1500;const start=performance.now();const tick=now=>{const t=Math.min((now-start)/dur,1);const eased=1-Math.pow(1-t,3);const val=target*eased;el.textContent=(decimals?val.toFixed(decimals):Math.round(val).toLocaleString('en-CA'))+suffix;if(t<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)};
+    const countObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){animateCount(entry.target);countObserver.unobserve(entry.target)}}),{threshold:.4});
+    counters.forEach(el=>countObserver.observe(el));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+  <script src="assets/glacier.js" defer></script>
+  <script src="assets/hub.js" defer></script>
+</body></html>
