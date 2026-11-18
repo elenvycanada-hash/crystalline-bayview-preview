@@ -38,3 +38,14 @@
 .preview-list li{color:#47696e}
 @media (max-width:860px){.hub{right:12px;bottom:70px}}
 @media (prefers-reduced-motion:reduce){.hub{transition:none}}
+/* hub: keep call number on one line at 390 wide */
+.contact-row .btn{white-space:nowrap;font-size:.74rem;padding:0 8px;gap:6px}
+@media (max-width:420px){.contact-row{gap:6px;padding:10px 12px}.contact-row .btn{font-size:.7rem}}
+
+/* V2 polish: keep the demo note and ask form visible; messages scroll inside .chat */
+.hub-body{display:flex;flex-direction:column;min-height:0}
+.hub-pane[data-pane="chat"]:not([hidden]){display:flex;flex-direction:column;flex:1 1 auto;min-height:0;overflow:hidden}
+.chat{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+/* Subtle hint that hub tabs can scroll sideways on narrow screens */
+.hub-tabs{mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%)}
+@media (min-width:480px){.hub-tabs{mask-image:none;-webkit-mask-image:none}}

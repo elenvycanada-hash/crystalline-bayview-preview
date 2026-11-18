@@ -36,8 +36,9 @@
   // smart guide: thinking state, typed answer, auto-demo until the visitor interacts
   const res=document.querySelector('.guide-result'),copy=document.getElementById('guide-result-copy');
   const opts=[...document.querySelectorAll('.guide-option')];
-  const typeOut=()=>{if(reduce||!copy)return;const full=copy.textContent;copy.textContent='';copy.classList.add('caret');let n=0;const t=setInterval(()=>{n+=3;copy.textContent=full.slice(0,n);if(n>=full.length){clearInterval(t);copy.textContent=full;copy.classList.remove('caret')}},16)};
-  opts.forEach(b=>b.addEventListener('click',()=>{if(reduce||!res)return;res.classList.add('thinking');setTimeout(()=>{res.classList.remove('thinking');typeOut()},420)}));
+  let typeTimer=null,thinkTimer=null;
+  const typeOut=full=>{if(reduce||!copy)return;clearInterval(typeTimer);const text=full||'';copy.textContent='';copy.classList.add('caret');let n=0;typeTimer=setInterval(()=>{n+=3;copy.textContent=text.slice(0,n);if(n>=text.length){clearInterval(typeTimer);copy.textContent=text;copy.classList.remove('caret')}},16)};
+  opts.forEach(b=>b.addEventListener('click',()=>{if(reduce||!res)return;const full=copy.textContent;res.classList.add('thinking');clearTimeout(thinkTimer);clearInterval(typeTimer);thinkTimer=setTimeout(()=>{res.classList.remove('thinking');typeOut(full)},420)}));
   let demo=null,userTouched=false;const stopDemo=()=>{userTouched=true;clearInterval(demo)};
   opts.forEach(b=>b.addEventListener('pointerdown',stopDemo));opts.forEach(b=>b.addEventListener('keydown',stopDemo));
   const guide=document.querySelector('.smart-guide');
@@ -56,8 +57,15 @@
   document.body.appendChild(sticky);
   const heroEl=document.querySelector('.hero'),req=document.getElementById('request');
   let reqVisible=false;if(req)new IntersectionObserver(es=>{reqVisible=es[0].isIntersecting;upd()},{threshold:.1}).observe(req);
-  const upd=()=>sticky.classList.toggle('show',heroEl&&heroEl.getBoundingClientRect().bottom<0&&!reqVisible);
+  const footerEl=document.querySelector('footer');
+  let footerVisible=false;
+  if(footerEl)new IntersectionObserver(es=>{footerVisible=es[0].isIntersecting;upd()},{threshold:.08}).observe(footerEl);
+  const upd=()=>{
+    const hubOpen=!!document.querySelector('.hub.open');
+    sticky.classList.toggle('show',!hubOpen&&!!heroEl&&heroEl.getBoundingClientRect().bottom<0&&!reqVisible&&!footerVisible);
+  };
   addEventListener('scroll',upd,{passive:true});
+  window.CrystallineSticky={update:upd};
 
   // cursor-reactive hero light + 3D tilt; scroll progress
   const hero=document.querySelector('.hero'),card=document.querySelector('.hero-card'),cr=document.querySelector('.crystals');

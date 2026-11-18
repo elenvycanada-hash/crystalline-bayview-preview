@@ -1,0 +1,47 @@
+/* ==== Theme-independent rules ====
+   Loaded after light.css. light.css is the Version 2 (day) colour layer and is
+   switched off at night (media="not all"), which leaves the exact Version 1 colours.
+   Everything below applies in both themes. */
+
+/* ==== V2 polish (2026-11-16): readability and a11y only; layout/fonts/palette unchanged ==== */
+
+/* Heading sheen: mid-stop was #72CAD5, which washes out on light glacier backgrounds mid-animation. */
+.hero h1 em .w,.section-head h2,.split-copy h2,.request-copy h2,.cta h2,.faq-intro h2,.stat-num{
+  background-image:linear-gradient(100deg,currentColor 42%,#007C8B 50%,currentColor 58%)
+}
+
+/* Dark contrast card 03: a later heading colour rule left the title near-black on a dark background. */
+.experience-card:nth-child(3) h3,.experience-card.visual h3{color:#fff!important}
+
+/* Keyboard focus (existing Version B teal). */
+:focus-visible{outline:2px solid #009FB3;outline-offset:3px}
+.btn:focus-visible{outline-offset:4px}
+
+/* Skip link: visually hidden until focused; does not affect layout. */
+.skip-link{position:absolute;left:16px;top:-80px;z-index:200;padding:10px 16px;border-radius:999px;background:#00333C;color:#fff;font:700 .85rem/1 "DM Sans",sans-serif;box-shadow:0 8px 24px rgba(0,51,60,.28)}
+.skip-link:focus,.skip-link:focus-visible{top:12px;outline:2px solid #72CAD5;outline-offset:3px}
+
+/* Night (Version 1 colours): the dark contrast sections keep Version 1's original
+   #72CAD5 heading sheen; the #007C8B polish sheen above is only for light backgrounds. */
+html[data-theme="dark"] .section-dark .section-head h2,
+html[data-theme="dark"] .section-dark .faq-intro h2,
+html[data-theme="dark"] .section-dark .split-copy h2{
+  background-image:linear-gradient(100deg,currentColor 42%,#72CAD5 50%,currentColor 58%)
+}
+
+/* ==== Day/night toggle (header) ==== */
+.nav-links{margin-left:auto}
+.theme-toggle{position:relative;display:inline-grid;place-items:center;flex:0 0 auto;width:40px;height:40px;margin-left:-14px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:#007C8B;cursor:pointer;box-shadow:0 6px 16px rgba(7,63,71,.08);transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.theme-toggle:hover{background:#EEF8FA;color:#00616D}
+.theme-toggle:active{transform:scale(.94)}
+.theme-toggle:focus-visible{outline:2px solid #009FB3;outline-offset:3px}
+.theme-toggle svg{grid-area:1/1;width:19px;height:19px;transition:opacity .25s ease,transform .35s ease}
+.theme-toggle .icon-moon{opacity:0;transform:rotate(-40deg) scale(.6)}
+html[data-theme="dark"] .theme-toggle{background:#00333C;border-color:#004854;color:#72CAD5}
+html[data-theme="dark"] .theme-toggle:hover{background:#004854;color:#fff}
+html[data-theme="dark"] .theme-toggle .icon-sun{opacity:0;transform:rotate(40deg) scale(.6)}
+html[data-theme="dark"] .theme-toggle .icon-moon{opacity:1;transform:none}
+@media (max-width:980px){.theme-toggle{width:44px;height:44px;margin-left:auto;margin-right:-18px}}
+@media (prefers-reduced-motion:reduce){.theme-toggle,.theme-toggle svg{transition:none}}
+/* cross-fade between themes (browsers with View Transitions; skipped for reduced motion in theme.js) */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}

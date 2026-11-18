@@ -1,0 +1,25 @@
+/* ==== Light glacier background pass (2026-10-12) ====
+   Backgrounds only move to light Version B tints; #00333C / #007C8B are kept for
+   headings, top bar, footer, buttons and a few deliberate contrast blocks
+   (trust intro, smart-guide result, third experience card). Text colours below are
+   only adjusted where a background became light, to keep WCAG AA contrast. */
+body{background:#F6FCFD}
+.hero{background:radial-gradient(circle at 13% 8%,rgba(114,202,213,.38) 0,transparent 42%),linear-gradient(135deg,#ffffff 25%,#F1FAFB 60%,#DDF2F5 100%)!important}
+.section-soft{background:linear-gradient(180deg,#EEF8FA,#F8FDFD)!important}
+/* former near-black sections -> pale glacier glass */
+.section-dark{background:linear-gradient(160deg,#E3F4F7 0%,#F4FBFC 45%,#D3EEF2 100%)!important;background-size:180% 180%!important;color:#00333C!important}
+.section-dark .eyebrow,.section-dark p.eyebrow[style]{color:#00616D!important}
+.section-dark .section-head h2,.section-dark .faq-intro h2,.section-dark h2[style]{color:#00333C!important}
+.section-dark .section-head p,.section-dark p[style],.section-dark .faq-intro p{color:#2F5A60!important}
+.section-dark .faq-list{border-top-color:rgba(0,124,139,.25)!important}
+.section-dark .faq-item{border-bottom-color:rgba(0,124,139,.2)!important}
+.section-dark .faq-question{color:#00333C!important}
+.section-dark .faq-question span{border-color:rgba(0,124,139,.4)!important}
+.section-dark .faq-answer p{color:#2F5A60!important}
+.section-dark .experience-card:not(:nth-child(2)):not(:nth-child(3)){color:#00333C}
+.experience-card:nth-child(2){background:linear-gradient(160deg,#DDF2F5,#B9E3EA)!important;color:#00333C!important}
+.cta{background:linear-gradient(125deg,#D3EEF2,#ffffff 52%,#DDF2F5)!important}
+.image-caption{background:linear-gradient(165deg,rgba(255,255,255,.88),rgba(236,248,250,.8))!important;color:#00333C!important;backdrop-filter:blur(10px)}
+/* glacier glass: subtle refraction band in the light sections */
+.section-dark{position:relative;isolation:isolate}
+.section-dark::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,transparent 60%)}

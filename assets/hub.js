@@ -23,16 +23,16 @@
   <div class="contact-row"><a class="btn btn-light" href="tel:0000000000" title="Placeholder number">📞 Call ${PHONE}</a><a class="btn btn-light" href="sms:0000000000" title="Placeholder number">💬 Text us</a></div>`;
   document.body.appendChild(hub);
   const $=s=>hub.querySelector(s);
-  const open=(tab)=>{hub.classList.add('open');hub.setAttribute('aria-hidden','false');if(tab)show(tab);if(!chatStarted)startChat()};
-  const close=()=>{hub.classList.remove('open');hub.setAttribute('aria-hidden','true')};
+  const open=(tab)=>{hub.classList.add('open');hub.setAttribute('aria-hidden','false');if(tab)show(tab);if(!chatStarted)startChat();window.CrystallineSticky&&window.CrystallineSticky.update&&window.CrystallineSticky.update()};
+  const close=()=>{hub.classList.remove('open');hub.setAttribute('aria-hidden','true');window.CrystallineSticky&&window.CrystallineSticky.update&&window.CrystallineSticky.update()};
   $('.hub-close').onclick=close;addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   const show=k=>{hub.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===k));hub.querySelectorAll('.hub-pane').forEach(p=>p.hidden=p.dataset.pane!==k)};
   hub.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 
   // chat
   const chat=$('.chat');let chatStarted=false;
-  const say=(t,who='bot')=>{const m=document.createElement('div');m.className='msg '+who;m.textContent=t;chat.append(m);chat.parentElement.parentElement.scrollTop=1e6;return m};
-  const botSay=t=>{if(reduce)return say(t);const m=say('');m.classList.add('typing');setTimeout(()=>{m.classList.remove('typing');m.textContent=t},650)};
+  const say=(t,who='bot')=>{const m=document.createElement('div');m.className='msg '+who;m.textContent=t;chat.append(m);chat.scrollTop=1e6;return m};
+  const botSay=t=>{if(reduce)return say(t);const m=say('');m.classList.add('typing');setTimeout(()=>{m.classList.remove('typing');m.textContent=t;chat.scrollTop=1e6},650)};
   function startChat(){chatStarted=true;botSay('Hi! I can answer common questions about the upcoming Bayview Village location, or help you start a booking request. (Demo)')}
   const answer=q=>{const t=q.toLowerCase();const hit=faqs.find(f=>f.q.toLowerCase().split(/\W+/).filter(w=>w.length>4).some(w=>t.includes(w)));
     if(/book|appoint|visit/.test(t))return 'You can start a demo booking request in the "Book" tab — the clinic would follow up to confirm.';
