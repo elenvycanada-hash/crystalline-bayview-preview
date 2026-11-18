@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="en"><head>
+  <meta name="robots" content="noindex, nofollow">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#009FB3">
@@ -453,13 +454,31 @@
   </style>
   <link rel="stylesheet" href="assets/glacier.css">
   <link rel="stylesheet" href="assets/hub.css">
+  <link rel="stylesheet" href="assets/light.css" id="theme-light">
+  <script>
+    /* Day/night theme, set before first paint: day (Version 2 colours) 07:00-18:59, night (Version 1 colours) 19:00-06:59
+       on the visitor's clock. A toggle choice is kept until the next 7am/7pm change, then the clock takes over again. */
+    (function(){var K='crystalline-theme',root=document.documentElement;
+      function clock(d){var h=d.getHours();return h>=7&&h<19?'light':'dark'}
+      function nextChange(d){var n=new Date(d.getTime()),h=d.getHours();if(h<7)n.setHours(7,0,0,0);else if(h<19)n.setHours(19,0,0,0);else{n.setDate(n.getDate()+1);n.setHours(7,0,0,0)}return n.getTime()}
+      function override(){try{var o=JSON.parse(localStorage.getItem(K)||'null');if(o&&(o.theme==='light'||o.theme==='dark')&&Date.now()<o.until)return o.theme;localStorage.removeItem(K)}catch(e){}return null}
+      function current(){return override()||clock(new Date())}
+      function apply(t){root.setAttribute('data-theme',t);var l=document.getElementById('theme-light');if(l)l.media=t==='dark'?'not all':'all'}
+      function set(t){try{localStorage.setItem(K,JSON.stringify({theme:t,until:nextChange(new Date())}))}catch(e){}apply(t)}
+      window.CrystallineTheme={key:K,clock:clock,current:current,apply:apply,set:set,nextChange:nextChange};
+      apply(current());
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/theme.css">
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="top-note"><div class="shell"><span aria-hidden="true"></span>Website concept · Opening details to be confirmed</div></div>
   <header class="site-header">
     <nav class="nav shell" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Crystalline Dental home"><img class="brand-logo" src="assets/crystalline-logo.png" alt="Crystalline Dental" width="376" height="201"></a>
       <div class="nav-links"><a href="#services">Services</a><a href="#doctor">Our dentist</a><a href="#experience">The experience</a><a href="#location">Location</a><a class="btn btn-primary" href="#request">Request an appointment</a></div>
+      <button class="theme-toggle" type="button" aria-label="Switch to night theme" aria-pressed="false" title="Night theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8Z"/></svg></button>
       <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
     </nav>
   </header>
@@ -475,7 +494,7 @@
         </div>
         <div class="hero-visual" aria-label="Abstract crystalline brand artwork">
           <div class="hero-card"><span class="orb one"></span><span class="orb two"></span><span class="crystal"></span></div>
-          <div class="floating-note"><strong>Bayview Village</strong><span>Second location · Exact opening date and address coming soon.</span></div>
+          <div class="floating-note"><strong>Bayview Village</strong><span>Second location · Opening date coming soon.</span></div>
         </div>
       </div>
     <section class="stats-section" aria-label="Crystalline Dental practice figures">
@@ -565,21 +584,21 @@
       <div class="shell faq-grid">
         <div class="faq-intro reveal"><p class="eyebrow" style="color:#7ddbd6">Good to know</p><h2>Questions before your first visit.</h2><p>Final answers will be updated as opening details are approved.</p></div>
         <div class="faq-list reveal">
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="true">When will the Bayview Village location open?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>The opening date has not yet been provided. This demo keeps that information clearly marked as coming soon.</p></div></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Where exactly will the clinic be located?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>The exact address and directions are pending confirmation. Only Bayview Village, North York is shown in this concept.</p></div></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Which dental services will be available?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>The categories above reflect services listed by the current Vaughan clinic. The final Bayview Village service list will be published only after this location confirms what it will offer.</p></div></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Will the clinic accept insurance or direct billing?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>Insurance and payment information has not been confirmed for the Bayview Village location.</p></div></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false">Can I book through this demo?<span aria-hidden="true">+</span></button><div class="faq-answer"><div><p>No. The request form demonstrates the intended experience but does not transmit data or create an appointment.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-answer-open" id="faq-q-open">When will the Bayview Village location open?<span aria-hidden="true">+</span></button><div class="faq-answer" id="faq-answer-open"><div><p>The opening date has not yet been provided. This demo keeps that information clearly marked as coming soon.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-location" id="faq-q-location">Where exactly will the clinic be located?<span aria-hidden="true">+</span></button><div class="faq-answer" id="faq-answer-location"><div><p>The clinic will be at 678 Sheppard Ave E, Unit 3, North York, ON M2K 1B7.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-services" id="faq-q-services">Which dental services will be available?<span aria-hidden="true">+</span></button><div class="faq-answer" id="faq-answer-services"><div><p>The categories above reflect services listed by the current Vaughan clinic. The final Bayview Village service list will be published only after this location confirms what it will offer.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-insurance" id="faq-q-insurance">Will the clinic accept insurance or direct billing?<span aria-hidden="true">+</span></button><div class="faq-answer" id="faq-answer-insurance"><div><p>Insurance and payment information has not been confirmed for the Bayview Village location.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-booking" id="faq-q-booking">Can I book through this demo?<span aria-hidden="true">+</span></button><div class="faq-answer" id="faq-answer-booking"><div><p>No. The request form demonstrates the intended experience but does not transmit data or create an appointment.</p></div></div></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="location">
       <div class="shell">
-        <div class="section-head reveal"><div><p class="eyebrow">Coming to North York</p><h2>A new home in Bayview Village.</h2></div><p>The exact address, directions, parking notes, transit details, phone number, and hours remain intentionally blank.</p></div>
+        <div class="section-head reveal"><div><p class="eyebrow">Coming to North York</p><h2>A new home in Bayview Village.</h2></div><p>The clinic is at 678 Sheppard Ave E, Unit 3, North York, ON M2K 1B7. Directions, parking notes, transit details, phone number, hours, and the opening date are still to be confirmed.</p></div>
         <div class="location-grid">
-          <div class="map-placeholder reveal" role="img" aria-label="Map placeholder for the future Bayview Village clinic address"><div class="map-pin"><span>BV</span></div></div>
-          <div class="location-card reveal"><p class="eyebrow">Second location</p><h3>Bayview Village<br>North York, ON</h3><p>Detailed location information will be added when confirmed by the clinic.</p><ul class="location-list"><li><strong>Address</strong><span>TODO — exact suite and street address</span></li><li><strong>Phone</strong><span>TODO — Bayview Village contact number</span></li><li><strong>Hours</strong><span>TODO — confirmed opening hours</span></li><li><strong>Opening</strong><span>TODO — confirmed opening date</span></li></ul><a class="btn btn-primary" href="#request">Join the appointment list</a></div>
+          <div class="map-placeholder reveal" role="img" aria-label="Map placeholder for the Bayview Village clinic at 678 Sheppard Ave E, Unit 3, North York, ON M2K 1B7"><div class="map-pin"><span>BV</span></div></div>
+          <div class="location-card reveal"><p class="eyebrow">Second location</p><h3>Bayview Village<br>North York, ON</h3><p>Phone, hours and opening date coming soon.</p><ul class="location-list"><li><strong>Address</strong><span>678 Sheppard Ave E, Unit 3, North York, ON M2K 1B7</span></li><li><strong>Phone</strong><span>TODO — Bayview Village contact number</span></li><li><strong>Hours</strong><span>TODO — confirmed opening hours</span></li><li><strong>Opening</strong><span>TODO — confirmed opening date</span></li></ul><a class="btn btn-primary" href="#request">Join the appointment list</a></div>
         </div>
       </div>
     </section>
@@ -589,16 +608,16 @@
     </section>
   </main>
   <footer>
-    <div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="#top" aria-label="Crystalline Dental home"><img class="brand-logo" src="assets/crystalline-logo.png" alt="Crystalline Dental" width="376" height="201"></a><p>A modern website concept for the second Crystalline Dental location, grounded in the Vaughan clinic’s established identity.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="#services">Services</a><a href="#doctor">Dr. Karamlou</a><a href="#experience">Experience</a><a href="#faq">FAQ</a></div></div><div><h3>Locations</h3><div class="footer-links"><span>Maple · Existing location</span><span>Bayview Village · Coming soon</span></div></div><div><h3>Contact</h3><div class="todo-contact"><span>Phone: TODO</span><span>Email: TODO</span><span>Address: TODO</span><span>Hours: TODO</span></div></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Crystalline Dental. Demo concept only.</span><span>Privacy · Accessibility · Terms — pages to be added</span></div></div>
+    <div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="#top" aria-label="Crystalline Dental home"><img class="brand-logo" src="assets/crystalline-logo.png" alt="Crystalline Dental" width="376" height="201"></a><p>A modern website concept for the second Crystalline Dental location, grounded in the Vaughan clinic’s established identity.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="#services">Services</a><a href="#doctor">Dr. Karamlou</a><a href="#experience">Experience</a><a href="#faq">FAQ</a></div></div><div><h3>Locations</h3><div class="footer-links"><span>Maple · Existing location</span><span>Bayview Village · Coming soon</span></div></div><div><h3>Contact</h3><div class="todo-contact"><span>Phone: TODO</span><span>Email: TODO</span><span>Address: 678 Sheppard Ave E, Unit 3, North York, ON M2K 1B7</span><span>Hours: TODO</span></div></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Crystalline Dental. Demo concept only.</span><span>Privacy · Accessibility · Terms — pages to be added</span></div></div>
   </footer>
   <div class="mobile-panel" aria-hidden="true"><a href="#services">Services</a><a href="#doctor">Our dentist</a><a href="#experience">The experience</a><a href="#location">Location</a><a class="btn btn-primary" href="#request">Request an appointment</a></div>
   <script>
     const menuButton=document.querySelector('.menu-btn');
     const mobilePanel=document.querySelector('.mobile-panel');
-    function closeMenu(){document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');mobilePanel.setAttribute('aria-hidden','true');menuButton.textContent='☰'}
-    menuButton.addEventListener('click',()=>{const open=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',open);menuButton.setAttribute('aria-expanded',String(open));mobilePanel.setAttribute('aria-hidden',String(!open));menuButton.textContent=open?'×':'☰'});
+    function closeMenu(){document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open menu');mobilePanel.setAttribute('aria-hidden','true');menuButton.textContent='☰'}
+    menuButton.addEventListener('click',()=>{const open=!document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',open);menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');mobilePanel.setAttribute('aria-hidden',String(!open));menuButton.textContent=open?'×':'☰'});
     mobilePanel.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-    document.querySelectorAll('.faq-question').forEach(button=>button.addEventListener('click',()=>{const wasOpen=button.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-question').forEach(item=>item.setAttribute('aria-expanded','false'));button.setAttribute('aria-expanded',String(!wasOpen))}));
+    document.querySelectorAll('.faq-question').forEach(button=>button.addEventListener('click',()=>{const wasOpen=button.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-question').forEach(item=>{item.setAttribute('aria-expanded','false');const ans=document.getElementById(item.getAttribute('aria-controls'));if(ans)ans.setAttribute('aria-hidden','true')});button.setAttribute('aria-expanded',String(!wasOpen));const ans=document.getElementById(button.getAttribute('aria-controls'));if(ans)ans.setAttribute('aria-hidden',String(wasOpen))}));document.querySelectorAll('.faq-question').forEach(item=>{const ans=document.getElementById(item.getAttribute('aria-controls'));if(ans)ans.setAttribute('aria-hidden',String(item.getAttribute('aria-expanded')!=='true'))});
     document.getElementById('appointment-form').addEventListener('submit',event=>{event.preventDefault();const status=document.getElementById('form-status');status.classList.add('show');status.scrollIntoView({behavior:'smooth',block:'nearest'})});
     const guideContent={routine:['Family dentistry','Routine exams, professional cleaning, and children’s dentistry are listed for the Vaughan clinic. Bayview availability still needs confirmation.'],urgent:['Emergency dental care','Emergency dental care is listed for Vaughan. Bayview availability is not yet confirmed; the clinic should advise on the right next step.'],missing:['Dental implants','Implant consultations and several implant treatment pathways are listed for Vaughan. Bayview availability still needs confirmation.'],smile:['Cosmetic dentistry','Veneers, whitening, bonding, and Invisalign are listed by the Vaughan practice. Bayview availability still needs confirmation.'],anxiety:['Sleep dentistry','The Vaughan clinic lists multiple sedation options. A clinician should discuss suitability; Bayview availability still needs confirmation.']};
     document.querySelectorAll('.guide-option').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.guide-option').forEach(item=>item.classList.remove('active'));button.classList.add('active');const content=guideContent[button.dataset.guide];document.getElementById('guide-result-title').textContent=content[0];document.getElementById('guide-result-copy').textContent=content[1]}));
@@ -612,4 +631,5 @@
   </script>
   <script src="assets/glacier.js" defer></script>
   <script src="assets/hub.js" defer></script>
+  <script src="assets/theme.js" defer></script>
 </body></html>
